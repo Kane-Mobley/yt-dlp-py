@@ -23,10 +23,10 @@ if typeState["type"] == "batch":
     pprint(state["format"])
     pprint(state["format"])
     if state["format"] != 'mp3':
-        subprocess.run(["./Assets/yt-dlp", "-f", state["format"], "-P","Output", "-a", batchFilePath])
+        subprocess.run(["./Assets/yt-dlp", "-f", state["format"], "--ffmpeg-location", "./Assets/ffmpeg-2024-10-02-git-358fdf3083-full_build/bin/ffmpeg.exe", "-P","Output", "-a", batchFilePath])
         input("Press enter to continue.....")
     elif state["format"] == 'mp3':
-        subprocess.run(["./Assets/yt-dlp", "-x","--audio-format","mp3","--ffmpeg-location", "Assets/ffmpeg.exe", "-P","Output", "-a", batchFilePath])
+        subprocess.run(["./Assets/yt-dlp", "-x","--audio-format","mp3","--ffmpeg-location", "./Assets/ffmpeg-2024-10-02-git-358fdf3083-full_build/bin/ffmpeg.exe", "-P","Output", "-a", batchFilePath])
         input("Press enter to continue.....")
     else:
         print("Please select valid download option and try again")
@@ -43,10 +43,10 @@ elif typeState["type"] == "link":
     state = inquirer.prompt(formatQuestions)
     pprint(state["format"])
     if state["format"] != 'mp3':
-        subprocess.run(["./Assets/yt-dlp", "-f", state["format"], "-P","Output", youTubeLink])
+        subprocess.run(["./Assets/yt-dlp", "-f", state["format"], "--ffmpeg-location", "./Assets/ffmpeg-2024-10-02-git-358fdf3083-full_build/bin/ffmpeg.exe", "-P","Output", youTubeLink])
         input("Press enter to continue.....")
     elif state["format"] == 'mp3':
-        subprocess.run(["./Assets/yt-dlp", "-x","--audio-format","mp3","--ffmpeg-location", "Assets/ffmpeg.exe", "-P","Output", youTubeLink])
+        subprocess.run(["./Assets/yt-dlp", "-x","--audio-format","mp3","--ffmpeg-location", "./Assets/ffmpeg-2024-10-02-git-358fdf3083-full_build/bin/ffmpeg.exe", "-P","Output", youTubeLink])
         input("Press enter to continue.....")
     else:
         print("Please select valid download option and try again")

@@ -1,3 +1,5 @@
+YT-DLP-PY SCRIPT BY KANE M.
+
 File structure should be:
 -Assets
 -Output

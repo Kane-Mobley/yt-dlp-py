@@ -1,11 +1,17 @@
 YT-DLP-PY SCRIPT
 ===========================================
-File structure should be: \n
--Assets \n
--Output \n
--Input \n
--Setup script \n
--yt-dlp-py script \n
+File structure should be:
+
+-Assets
+
+-Output
+
+-Input
+
+-Setup script
+
+-yt-dlp-py script
+
 
 1. Install python
 2. Run the setup script

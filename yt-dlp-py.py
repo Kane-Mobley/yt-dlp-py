@@ -53,13 +53,15 @@ match typeState["type"]:
  case ImportType.BATCH:
     batchFilePath = "./Input/URLS.txt"
     state = inquirer.prompt(promptForFormat())
+    format = state["format"]
     # TODO - are both of the below lines needed?
-    pprint(state["format"])
-    uploadMedia(state["format"], batchFilePath, batchUploadVideo, batchUploadSound)
+    pprint(format)
+    uploadMedia(format, batchFilePath, batchUploadVideo, batchUploadSound)
  case ImportType.LINK:   
     youTubeLink = str(input("PASTE YOUR YOUTUBE LINK: "))
     state = inquirer.prompt(promptForFormat())
-    pprint(state["format"])
-    uploadMedia(state["format"], youTubeLink, linkUploadVideo, linkUploadSound)
+    format = state["format"]
+    pprint(format)
+    uploadMedia(format, youTubeLink, linkUploadVideo, linkUploadSound)
 
 input("Press enter to continue.....")

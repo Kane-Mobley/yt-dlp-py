@@ -55,7 +55,6 @@ match typeState["type"]:
     state = inquirer.prompt(promptForFormat())
     # TODO - are both of the below lines needed?
     pprint(state["format"])
-    pprint(state["format"])
     uploadMedia(state["format"], batchFilePath, batchUploadVideo, batchUploadSound)
  case ImportType.LINK:   
     youTubeLink = str(input("PASTE YOUR YOUTUBE LINK: "))

@@ -1,20 +1,20 @@
 import subprocess
 from pprint import pprint
 import inquirer
-from classes import Format
+from classes import FileFormat, ImportType
 
 def promptForFormat():
     return [inquirer.List(
             "format",
             message="What format do you need?",
-            choices=[Format.MP4, Format.MP3, Format.WEBM],
+            choices=[FileFormat.MP4, FileFormat.MP3, FileFormat.WEBM],
             )]
 
 typeQuestion = [
     inquirer.List(
         "type",
         message="What type of import are you using?",
-        choices=["batch", "link"],
+        choices=[ImportType.BATCH, ImportType.LINK],
     ),
 ]
 typeState = inquirer.prompt(typeQuestion)

@@ -1,17 +1,17 @@
 import subprocess
 from pprint import pprint
 import inquirer
-from classes import FileFormat, ImportType
+from classes import FileFormat, ImportType, UploadInformation
 
 def promptForFormat():
     return [inquirer.List(
-            "format",
+            UploadInformation.FORMAT,
             message="What format do you need?",
             choices=[FileFormat.MP4, FileFormat.MP3, FileFormat.WEBM],
             )]
 def promptForImportType():
     return [inquirer.List(
-            "type",
+            UploadInformation.TYPE,
             message="What type of import are you using?",
             choices=[ImportType.BATCH, ImportType.LINK],
             )]
@@ -39,28 +39,19 @@ def uploadMedia(format, media, videoUploadFunc, soundUploadFunc):
         case _:
             print("Please select valid download option and try again")
 
-
-typeQuestion = [
-    inquirer.List(
-        "type",
-        message="What type of import are you using?",
-        choices=[ImportType.BATCH, ImportType.LINK],
-    ),
-]
 typeState = inquirer.prompt(promptForImportType())
 pprint(typeState)
-match typeState["type"]:
+match typeState[UploadInformation.TYPE]:
  case ImportType.BATCH:
     batchFilePath = "./Input/URLS.txt"
     state = inquirer.prompt(promptForFormat())
-    format = state["format"]
-    # TODO - are both of the below lines needed?
+    format = state[UploadInformation.FORMAT]
     pprint(format)
     uploadMedia(format, batchFilePath, batchUploadVideo, batchUploadSound)
  case ImportType.LINK:   
     youTubeLink = str(input("PASTE YOUR YOUTUBE LINK: "))
     state = inquirer.prompt(promptForFormat())
-    format = state["format"]
+    format = state[UploadInformation.FORMAT]
     pprint(format)
     uploadMedia(format, youTubeLink, linkUploadVideo, linkUploadSound)
 

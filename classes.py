@@ -8,3 +8,7 @@ class FileFormat(Enum):
 class ImportType(Enum):
     BATCH = 'batch',
     LINK = 'link'
+
+class UploadInformation(Enum):
+    FORMAT = 'format',
+    TYPE = 'type'

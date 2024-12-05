@@ -3,6 +3,13 @@ from pprint import pprint
 import inquirer
 from classes import Format
 
+def promptForFormat():
+    return [inquirer.List(
+            "format",
+            message="What format do you need?",
+            choices=[Format.MP4, Format.MP3, Format.WEBM],
+            )]
+
 typeQuestion = [
     inquirer.List(
         "type",
@@ -14,13 +21,7 @@ typeState = inquirer.prompt(typeQuestion)
 pprint(typeState)
 if typeState["type"] == "batch":
     batchFilePath = "./Input/URLS.txt"
-    formatQuestions = [
-        inquirer.List(
-            "format",
-            message="What format do you need?",
-            choices=[Format.MP4, Format.MP3, Format.WEBM],
-            ),
-            ]
+    formatQuestions = promptForFormat()
     state = inquirer.prompt(formatQuestions)
     pprint(state["format"])
     pprint(state["format"])
@@ -35,13 +36,7 @@ if typeState["type"] == "batch":
         input("Press enter to continue.....")
 elif typeState["type"] == "link":
     youTubeLink = str(input("PASTE YOUR YOUTUBE LINK: "))
-    formatQuestions = [
-        inquirer.List(
-            "format",
-            message="What format do you need?",
-            choices=[Format.MP4, Format.MP3, Format.WEBM],
-        ),
-    ]
+    formatQuestions = promptForFormat()
     state = inquirer.prompt(formatQuestions)
     pprint(state["format"])
     if state["format"] != 'mp3':

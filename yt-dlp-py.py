@@ -3,6 +3,7 @@ from pprint import pprint
 import inquirer
 from classes import FileFormat, ImportType, UploadInformation
 
+#region Helper Functions
 def promptForFormat():
     return [inquirer.List(
             UploadInformation.FORMAT,
@@ -38,21 +39,27 @@ def uploadMedia(format, media, videoUploadFunc, soundUploadFunc):
             soundUploadFunc(media)
         case _:
             print("Please select valid download option and try again")
+#endregion
 
+#region Main
+# Prompt user for import type
 typeState = inquirer.prompt(promptForImportType())
 pprint(typeState)
 match typeState[UploadInformation.TYPE]:
  case ImportType.BATCH:
     batchFilePath = "./Input/URLS.txt"
+    # Prompt user for format
     state = inquirer.prompt(promptForFormat())
     format = state[UploadInformation.FORMAT]
     pprint(format)
     uploadMedia(format, batchFilePath, batchUploadVideo, batchUploadSound)
  case ImportType.LINK:   
     youTubeLink = str(input("PASTE YOUR YOUTUBE LINK: "))
+    # Prompt user for format
     state = inquirer.prompt(promptForFormat())
     format = state[UploadInformation.FORMAT]
     pprint(format)
     uploadMedia(format, youTubeLink, linkUploadVideo, linkUploadSound)
 
 input("Press enter to continue.....")
+#endregion

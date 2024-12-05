@@ -1,6 +1,8 @@
 import subprocess
 from pprint import pprint
 import inquirer
+from classes import Format
+
 typeQuestion = [
     inquirer.List(
         "type",
@@ -16,7 +18,7 @@ if typeState["type"] == "batch":
         inquirer.List(
             "format",
             message="What format do you need?",
-            choices=["mp4", "mp3", "webm"],
+            choices=[Format.MP4, Format.MP3, Format.WEBM],
             ),
             ]
     state = inquirer.prompt(formatQuestions)
@@ -37,7 +39,7 @@ elif typeState["type"] == "link":
         inquirer.List(
             "format",
             message="What format do you need?",
-            choices=["mp4", "mp3", "webm"],
+            choices=[Format.MP4, Format.MP3, Format.WEBM],
         ),
     ]
     state = inquirer.prompt(formatQuestions)
